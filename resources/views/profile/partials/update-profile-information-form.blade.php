@@ -31,6 +31,34 @@
             />
             <x-input-error class="mt-2 text-pink-400" :messages="$errors->get('name')" />
         </div>
+         <div>
+            <x-input-label for="apellido" :value="__('Apellido')" class="text-fuchsia-300" />
+            <x-text-input
+                id="apellido"
+                name="apellido"
+                type="text"
+                class="mt-1 block w-full rounded-md border border-fuchsia-400 bg-transparent text-white placeholder:text-fuchsia-400 focus:border-purple-500 focus:ring-purple-500"
+                :value="old('Apellido', $user->apellido)"
+                required
+                autofocus
+                autocomplete="apellido"
+            />
+            <x-input-error class="mt-2 text-pink-400" :messages="$errors->get('apellido')" />
+        </div>
+         <div>
+            <x-input-label for="cedula" :value="__('Cedula')" class="text-fuchsia-300" />
+            <x-text-input
+                id="cedula"
+                name="cedula"
+                type="text"
+                class="mt-1 block w-full rounded-md border border-fuchsia-400 bg-transparent text-white placeholder:text-fuchsia-400 focus:border-purple-500 focus:ring-purple-500"
+                :value="old('Cedula', $user->cedula)"
+                required
+                autofocus
+                autocomplete="cedula"
+            />
+            <x-input-error class="mt-2 text-pink-400" :messages="$errors->get('cedula')" />
+        </div>
 
         <div>
             <x-input-label for="email" :value="__('Email')" class="text-fuchsia-300" />

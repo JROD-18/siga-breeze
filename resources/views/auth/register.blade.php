@@ -19,6 +19,24 @@
                 <x-input-error :messages="$errors->get('name')" class="mt-1 text-fuchsia-300 font-mono text-xs" />
             </div>
 
+            <!-- Apellido -->
+            <div class="relative group">
+                <x-input-label for="apellido" :value="__('apellido')" class="text-purple-200 text-sm sm:text-base font-mono tracking-wide" />
+                <x-text-input id="apellido" name="apellido" type="text" :value="old('apellido')" required autofocus autocomplete="apellido"
+                    placeholder="Tu Apellido"
+                    class="block mt-1 w-full bg-black/70 text-white border-2 border-fuchsia-400/50 focus:border-fuchsia-400 placeholder-purple-400/50 font-mono text-sm sm:text-base" />
+                <x-input-error :messages="$errors->get('apellido')" class="mt-1 text-fuchsia-300 font-mono text-xs" />
+            </div>
+            <!-- cedula -->
+            <div class="relative group">
+                <x-input-label for="cedula" :value="__('Cedula')" class="text-purple-200 text-sm sm:text-base font-mono tracking-wide" />
+                <x-text-input id="cedula" name="cedula" type="text" :value="old('Cedula')" required autofocus autocomplete="cedula"
+                    placeholder="Tu cedula"
+                    class="block mt-1 w-full bg-black/70 text-white border-2 border-fuchsia-400/50 focus:border-fuchsia-400 placeholder-purple-400/50 font-mono text-sm sm:text-base" />
+                <x-input-error :messages="$errors->get('cedula')" class="mt-1 text-fuchsia-300 font-mono text-xs" />
+            </div>
+
+
             <!-- Email -->
             <div class="relative group">
                 <x-input-label for="email" :value="__('Correo Electrónico')" class="text-purple-200 text-sm sm:text-base font-mono tracking-wide" />

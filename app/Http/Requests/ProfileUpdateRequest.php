@@ -17,6 +17,8 @@ class ProfileUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
+            'apellido' => ['required', 'string', 'max:255'],
+            'cedula' => ['required', 'string', 'regex:/^[0-9]{6,10}$/', 'unique:users,cedula'],
             'email' => [
                 'required',
                 'string',
