@@ -47,7 +47,7 @@
                     </div>
 
                     <!-- Sonido -->
-                    <audio id="beepSound" src="/sounds/arcade-beep.mp3" preload="auto"></audio>
+                    <audio id="beepSound" src="{{asset('sounds/retro.mp3')}}" preload="auto"></audio>
                 </div>
 
                 <div class="arcade-footer h-4 w-full bg-gradient-to-r from-purple-900/80 via-fuchsia-900/80 to-purple-900/80 border-t border-fuchsia-400/30 mt-4 rounded-b-lg"></div>
