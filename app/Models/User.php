@@ -2,15 +2,24 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Hash;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Illuminate\Support\Facades\Log;
+use App\Mail\CustomResetPassword;
+use App\Mail\CustomVerifyEmail;
+use Illuminate\Support\Facades\Mail;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+   use HasFactory, Notifiable,HasRoles;
+    protected $guard='web';
 
     /**
      * The attributes that are mass assignable.

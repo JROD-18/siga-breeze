@@ -14,7 +14,54 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden sm:flex space-x-6 font-mono tracking-wider text-sm">
+                    <x-nav-link :href="route('articles.index')" :active="request()->routeIs('article.index')" class="text-fuchsia-300 hover:text-white">
+                        {{ __('article') }}
+                    </x-nav-link>
+                </div>
             </div>
+            <li>
+                <x-nav-link :href="route('perfil.index')" :active="request()->routeIs('perfil.index')">
+                    {{ __('Administración/Home') }}
+                </x-nav-link>
+            </li>
+
+            <!-- Administracion de Usuarios Dropdown -->
+            {{-- @can('boton administracion de usuarios') --}}
+            <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <div x-data="{ open: false }" class="relative">
+                    <a @click="open = ! open" class="nav-link dropdown-toggle cursor-pointer">
+                        Administracion de Usuarios
+                    </a>
+                    <ul x-show="open" @click.away="open = false" x-transition
+                        class="dropdown-menu absolute right-0 w-48 mt-2 bg-white border border-gray-200 rounded-md shadow-lg">
+                        {{-- @can('ver permisos')  --}}
+                         <li>
+                            <x-nav-link :href="route('permissions.index')" :active="request()->routeIs('permissions.index')">
+                                {{ __('Permisos') }}
+                            </x-nav-link>
+                        </li>
+                        {{-- @endcan --}}
+
+                       @can('ver roles') 
+                        <li>
+                            <x-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.index')">
+                                {{ __('Roles') }}
+                            </x-nav-link>
+                        </li> 
+                        @endcan 
+
+                        @can('ver usuarios')
+                        <li>
+                            <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                                {{ __('Usuarios') }}
+                            </x-nav-link>
+                        </li>
+                        @endcan
+                    </ul>
+                </div>
+            </div>
+            {{-- @endcan --}}
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
