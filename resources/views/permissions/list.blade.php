@@ -16,16 +16,16 @@
             <table class="table table-striped-columns w-full">
                 <thead class="bg-gray-50">
                     <tr class="border-b">
-                        <th scope="col" class="px-6 py-3 text-left text-black" width="30">#</th>
-                        <th scope="col" class="px-6 py-3 text-left text-black">Name</th>
-                        <th scope="col" class="px-6 py-3 text-left text-black" width="250">Creación</th>
-                        <th scope="col" class="px-6 py-3 text-center text-black" width="200">Acción</th>
+                        <th scope="col" class="px-6 py-3 text-left text-white" width="30">#</th>
+                        <th scope="col" class="px-6 py-3 text-left text-white">Name</th>
+                        <th scope="col" class="px-6 py-3 text-left text-white" width="250">Creación</th>
+                        <th scope="col" class="px-6 py-3 text-center text-white" width="200">Acción</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
                     @if ($permissions->isNotEmpty())
                         @foreach ($permissions as $permission)
-                            <tr class="border-b bg-gray-800 text-white">
+                            <tr class="border-b bg-gray-50 text-white">
                                 <td class="px-6 py-3 text-left">{{ $permission->id }}</td>
                                 <td class="px-6 py-3 text-left">{{ $permission->name }}</td>
                                 <td class="px-6 py-3 text-left">{{ $permission->created_at->format('d M, y') }}</td>

@@ -17,12 +17,12 @@
             <table class="table table-striped-columns w-full">
                 <thead class="bg-gray-50">
                     <tr class="border-b">
-                        <th scope="col" class="px-6 py-3 text-left" width="30">#</th>
-                        <th scope="col"  class="px-6 py-3 text-left" >Nombre</th>
-                        <th scope="col"  class="px-6 py-3 text-left" >Email</th>
-                        <th scope="col"  class="px-6 py-3 text-left" >Roles</th>
-                        <th scope="col" class="px-6 py-3 text-left"  width="250">creacion </th>
-                        <th scope="col" class="px-6 py-3 text-center"  width="200">action</th>
+                        <th scope="col" class="px-6 py-3 text-left text-white" width="30">#</th>
+                        <th scope="col"  class="px-6 py-3 text-left text-white" >Nombre</th>
+                        <th scope="col"  class="px-6 py-3 text-left text-white" >Email</th>
+                        <th scope="col"  class="px-6 py-3 text-left text-white" >Roles</th>
+                        <th scope="col" class="px-6 py-3 text-left text-white"  width="250">Fecha de creacion </th>
+                        <th scope="col" class="px-6 py-3 text-center text-white"  width="200">action</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
@@ -31,15 +31,15 @@
                         
                   
                     <tr class="border-b">
-                        <td class="px-6 py-3 text-left">  {{$user->id}}</td>
+                        <td class="px-6 py-3 text-left text-white">  {{$user->id}}</td>
                       
-                        <td class="px-6 py-3 text-left"> {{$user->name}}</td>
+                        <td class="px-6 py-3 text-left text-white"> {{$user->name}}</td>
 
-                        <td class="px-6 py-3 text-left"> {{$user->email}}</td>
+                        <td class="px-6 py-3 text-left text-white"> {{$user->email}}</td>
                          
-                        <td class="px-6 py-3 text-left"> {{$user->roles->pluck('name')->implode(', ')}}</td>
+                        <td class="px-6 py-3 text-left text-white"> {{$user->roles->pluck('name')->implode(', ')}}</td>
                        
-                        <td class="px-6 py-3 text-left">{{\Carbon\Carbon::parse($user->created_at)->format('d M,y')}}</td>
+                        <td class="px-6 py-3 text-left text-white">{{\Carbon\Carbon::parse($user->created_at)->format('d M,y')}}</td>
                         
                         <td class="px-6 py-3 text-center">
                            @can('editar usuarios')

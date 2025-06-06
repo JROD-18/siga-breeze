@@ -26,7 +26,7 @@
                 </thead>
                 <tbody class="table-group-divider">
                     @forelse ($roles as $role)
-                        <tr class="border-b bg-gray-800">
+                        <tr class="border-b bg-gray-50">
                             <td class="px-6 py-3 text-left text-white">{{ $role->id }}</td>
                             <td class="px-6 py-3 text-left text-white">{{ $role->name }}</td>
                             <td class="px-6 py-3 text-left text-white">{{ $role->permissions->pluck('name')->implode(', ') }}</td>

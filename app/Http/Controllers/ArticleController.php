@@ -18,8 +18,8 @@ class ArticleController extends Controller
 
     public function index()
     {
-       $articles = Article::latest()->paginate(10);
-       return view('articles.list', ['articles' => $articles]);
+        $articles = Article::latest()->paginate(10);
+        return view('articles.list', compact('articles'));
     }
 
     public function create()
@@ -29,13 +29,9 @@ class ArticleController extends Controller
 
     public function store(Request $request)
     {
-       $validator = Validator::make($request->all(), [
-            'titulo' => 'required|min:5',
-            'texto'  => 'required|min:5',
-            'autor'  => 'required|min:5',
-       ]);
+        $validator = Validator::make($request->all(), $this->validationRules());
 
-       if ($validator->passes()) {
+        if ($validator->passes()) {
             $article = new Article();
             $article->titulo = $request->titulo;
             $article->texto = $request->texto;
@@ -43,37 +39,33 @@ class ArticleController extends Controller
             $article->save();
 
             return redirect()->route('articles.index')->with('success','Artículo creado exitosamente.');
-       } else {
-           return redirect()->route('articles.create')->withInput()->withErrors($validator);
-       }
+        } else {
+            return redirect()->route('articles.create')->withInput()->withErrors($validator);
+        }
     }
 
-    public function edit(string $id)
+    public function edit($id)
     {
         $article = Article::findOrFail($id);
         return view('articles.edit', ['article'=> $article]);
     }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         $article = Article::findOrFail($id);
 
-        $validator = Validator::make($request->all(), [
-            'titulo' => 'required|min:5',
-            'texto'  => 'required|min:5',
-            'autor'  => 'required|min:5'
-       ]);
+        $validator = Validator::make($request->all(), $this->validationRules());
 
-       if ($validator->passes()) {
+        if ($validator->passes()) {
             $article->titulo = $request->titulo;
             $article->texto = $request->texto;
             $article->autor = $request->autor;
             $article->save();
 
             return redirect()->route('articles.index')->with('success','Artículo editado exitosamente.');
-       } else {
-           return redirect()->route('articles.edit', $id)->withInput()->withErrors($validator);
-       }
+        } else {
+            return redirect()->route('articles.edit', $id)->withInput()->withErrors($validator);
+        }
     }
 
     public function destroy($id)
@@ -88,4 +80,5 @@ class ArticleController extends Controller
 
         return redirect()->route('articles.index')->with('success', 'Artículo eliminado correctamente.');
     }
+
 }

@@ -15,7 +15,7 @@
                     <form action="{{ route('users.store') }}" method="post">
                         @csrf
                         <div>
-                            <label for="" class="text-lg font-medium">Nombre</label>
+                            <label for="" class="text-lg text-white font-medium">Nombre</label>
                             <div class="my-3">
                                 <input value="{{ old('name ') }}" name="name" placeholder="Nombre" type="text"
                                     class="border-gray-300 shadow-sm w-1/2 reunderd-lg">

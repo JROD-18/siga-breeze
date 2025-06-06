@@ -41,10 +41,7 @@
                     @auth
                         <a href="{{ url('/dashboard') }}" class="arcade-link">{{ Auth::user()->name }}</a>
                     @else
-                        <a href="{{ route('login') }}" class="arcade-link">Entrar</a>
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="arcade-link">Registrarme</a>
-                        @endif
+                    
                     @endauth
                 @endif
             </nav>
