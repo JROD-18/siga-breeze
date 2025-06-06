@@ -4,18 +4,18 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Usuarios / Crear
             </h2>
-            <a href="{{ route('users.index') }}" class="bg-slate-700 text-sm text-white rounded-md px-3 py-2">Atras</a>
+            <a href="{{ route('users.index') }}" class="bg-slate-700 text-lg text-black rounded-md px-3 py-2">Atras</a>
         </div>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="py-12 bg-black">
+        <div style="background-color: #6B46C1; "class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
+                <div class="p-6 text-gray-900 ">
                     <form action="{{ route('users.store') }}" method="post">
                         @csrf
-                        <div>
-                            <label for="" class="text-lg text-white font-medium">Nombre</label>
+                        <div class="bg-white">
+                            <label for="" class="text-lg text-font-medium">Nombre</label>
                             <div class="my-3">
                                 <input value="{{ old('name ') }}" name="name" placeholder="Nombre" type="text"
                                     class="border-gray-300 shadow-sm w-1/2 reunderd-lg">
@@ -67,7 +67,7 @@
 
                             </div>
                             <button
-                                class="bg-slate-700 hover:bg-slate-500 text-sm text-white rounded-md px-3 py-2">Crear</button>
+                                class="bg-slate-700 hover:bg-slate-500 text-md text-black rounded-md px-3 py-2">Crear</button>
                         </div>
                     </form>
                 </div>

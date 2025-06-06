@@ -6,7 +6,7 @@
             {{ __('Articulos') }}
         </h2>
       @can('crear articulos')
-            <a href="{{route('articles.create')}}" class="bg-slate-700 text-sm text-white rounded-md px-3 py-2">Crear</a>
+            <a href="{{route('articles.create')}}" class="bg-slate-700 text-lg text-black rounded-md px-3 py-2">Crear</a>
          @endcan
     </div>
     </x-slot>
@@ -17,11 +17,11 @@
             <table class="table table-striped-columns w-full">
                 <thead class="bg-gray-50">
                     <tr class="border-b">
-                        <th scope="col" class="px-6 py-3 text-left" width="30">#</th>
-                        <th scope="col"  class="px-6 py-3 text-left" >Titulo</th>
-                        <th scope="col"  class="px-6 py-3 text-left" >Autor</th>
-                        <th scope="col" class="px-6 py-3 text-left"  width="250">creacion </th>
-                        <th scope="col" class="px-6 py-3 text-center"  width="200">action</th>
+                        <th scope="col" class="px-6 py-3 text-left text-white" width="30">#</th>
+                        <th scope="col"  class="px-6 py-3 text-left text-white" >Titulo</th>
+                        <th scope="col"  class="px-6 py-3 text-left text-white" >Autor</th>
+                        <th scope="col" class="px-6 py-3 text-left text-white"  width="250">creacion </th>
+                        <th scope="col" class="px-6 py-3 text-center text-white"  width="200">action</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">

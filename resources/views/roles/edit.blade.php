@@ -4,12 +4,12 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Roles / Editar
             </h2>
-            <a href="{{ route('roles.index') }}" class="bg-slate-700 text-sm text-white rounded-md px-3 py-2 hover:bg-slate-600">Atrás</a>
+            <a href="{{ route('roles.index') }}" class="bg-slate-700 text-lg text-black rounded-md px-3 py-2 hover:bg-slate-600">Atrás</a>
         </div>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto bg-slate-50 sm:px-6 lg:px-8">
+    <div class="py-12 bg-black">
+        <div style="background-color: #6B46C1; "class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <form action="{{ route('roles.update', $role->id) }}" method="POST">
@@ -50,7 +50,7 @@
                             @endif
                         </div>
 
-                        <button type="submit" class="bg-slate-700 hover:bg-slate-500 text-sm text-white rounded-md px-3 py-2">Guardar</button>
+                        <button type="submit" class="bg-slate-700 hover:bg-slate-500 text-lg text-black rounded-md px-3 py-2">Guardar</button>
                     </form>
                 </div>
             </div>

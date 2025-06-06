@@ -5,7 +5,7 @@
                 {{ __('Roles') }}
             </h2>
             @can('ver roles')
-                <a href="{{ route('roles.create') }}" class="bg-slate-700 text-sm text-white rounded-md px-3 py-2 hover:bg-slate-600">Crear</a>
+                <a href="{{ route('roles.create') }}" class="bg-slate-700 text-lg text-black rounded-md px-3 py-2 hover:bg-slate-600">Crear</a>
             @endcan
         </div>
     </x-slot>
