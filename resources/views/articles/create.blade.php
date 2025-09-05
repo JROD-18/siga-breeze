@@ -1,0 +1,47 @@
+<x-app-layout>
+    <x-slot name="header">
+        <div class="flex justify-between" >
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            Articulos / Crear
+        </h2>
+            <a href="{{route('articles.index')}}" class="bg-slate-700 text-sm text-white rounded-md px-3 py-2">Atras</a>
+        </div>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    <form action="{{route('articles.store')}}" method="post">
+                        @csrf
+                    <div>
+                   <label for="" class="text-lg font-medium" >Titulo</label>
+                    <div class="my-3">
+                    <input value="{{old('titulo')}}" name="titulo" placeholder="Titulo" type="text" class="border-gray-300 shadow-sm w-1/2 reunderd-lg">
+                    
+                    @error('titulo')
+                        <p class="text-red-400 font-medium">{{$message}}</p>
+                    @enderror
+                </div>
+
+                <label for="texto" class="text-lg font-medium" >Contenido</label>
+                <div class="my-3">
+                <textarea name="texto" id="texto" cols="30" rows="10"  value="{{old('texto')}}"  placeholder="Contenido" type="text" class="border-gray-300 shadow-sm w-1/2 reunderd-lg"></textarea>
+             
+            </div>
+
+                        <label for="" class="text-lg font-medium" >Autor</label>
+                        <div class="my-3">
+                        <input value="{{old('autor')}}" name="autor" placeholder="autor" type="text" class="border-gray-300 shadow-sm w-1/2 reunderd-lg">
+                        @error('autor')
+                        <p class="text-red-400 font-medium">{{$message}}</p>
+                    @enderror
+                    </div>
+            
+                <button class="bg-slate-700 text-sm text-white rounded-md px-3 py-2">Buscar</button>
+            </div>
+        </form>
+    </div></div>
+    </div>
+    </div>
+</x-app-layout>

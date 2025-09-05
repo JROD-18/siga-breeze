@@ -1,0 +1,33 @@
+/* Neón fucsia/morado */
+.drop-shadow-fuchsia {
+    text-shadow:
+        0 0 5px #ff4fe1,
+        0 0 10px #d946ef,
+        0 0 20px #a21caf;
+}
+
+.neon-shadow {
+    box-shadow:
+        0 0 12px #ff4fe1,
+        0 0 25px #a855f7,
+        0 0 45px #9333ea;
+}
+
+.shadow-pink {
+    box-shadow:
+        0 0 10px #ec4899,
+        0 0 20px #f472b6;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('logo/fondo1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    flex-direction: column;
+    display: flex;
+    height: 50vh; /* Ajusta el body al alto total de la ventana */
+}

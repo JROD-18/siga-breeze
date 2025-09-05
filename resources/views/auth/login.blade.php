@@ -1,47 +1,145 @@
 <x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <div class="w-full max-w-md mx-4 sm:mx-auto arcade-frame bg-gradient-to-br from-fuchsia-900 via-purple-900 to-fuchsia-900 border-4 border-fuchsia-300/80 rounded-t-[2rem] rounded-b-md shadow-[0_0_30px_10px_rgba(236,72,153,0.7),0_0_50px_15px_rgba(168,85,247,0.5)] relative overflow-hidden transform transition-all hover:shadow-[0_0_40px_15px_rgba(236,72,153,0.8),0_0_60px_20px_rgba(168,85,247,0.6)] neon-glow">
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+        <!-- CRT efecto -->
+        <div class="crt-effect absolute inset-0 pointer-events-none"></div>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <!-- Título arcade -->
+        <div class="bg-black p-3 sm:p-4 rounded-t-[2rem] border-b-4 border-fuchsia-400 text-center shadow-inner relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-fuchsia-500/30 to-transparent animate-scanline"></div>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-300 to-purple-300 tracking-wider neon-text">
+                ADMIN ARCADE
+            </h2>
+            <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-fuchsia-400 to-transparent animate-pulse"></div>
         </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+        <!-- Formulario -->
+        <div class="p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6 text-white relative z-10">
+            <x-auth-session-status class="text-fuchsia-300 text-center text-xs sm:text-sm font-mono tracking-wide" :status="session('status')" />
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                <!-- Email -->
+                <div class="relative group">
+                    <x-input-label for="email" :value="__('Correo Electrónico')" class="text-purple-200 text-sm sm:text-base font-mono tracking-wide" />
+                    <x-text-input id="email" name="email" type="email" :value="old('email')" required autofocus
+                        class="block mt-1 w-full bg-black/70 text-white border-2 border-fuchsia-400/50 focus:border-fuchsia-400 focus:ring-0 font-mono placeholder-purple-400/50 transition-all group-hover:border-fuchsia-300 text-sm sm:text-base"
+                        placeholder="usuario@dominio.com" />
+                    <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-fuchsia-400 to-purple-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+                    <x-input-error :messages="$errors->get('email')" class="mt-1 text-fuchsia-300 font-mono text-xs" />
+                </div>
+
+                <!-- Password -->
+                <div class="relative group mt-4 sm:mt-6">
+                    <x-input-label for="password" :value="__('Contraseña')" class="text-purple-200 text-sm sm:text-base font-mono tracking-wide" />
+                    <x-text-input id="password" name="password" type="password" required
+                        class="block mt-1 w-full bg-black/70 text-white border-2 border-fuchsia-400/50 focus:border-fuchsia-400 focus:ring-0 font-mono placeholder-purple-400/50 transition-all group-hover:border-fuchsia-300 text-sm sm:text-base"
+                        placeholder="••••••••" />
+                    <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-400 to-fuchsia-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+                    <x-input-error :messages="$errors->get('password')" class="mt-1 text-fuchsia-300 font-mono text-xs" />
+                </div>
+
+                <!-- Recuérdame -->
+                <div class="flex items-center mt-4 sm:mt-6">
+                    <input id="remember_me" type="checkbox" name="remember"
+                        class="w-4 h-4 sm:w-5 sm:h-5 text-fuchsia-400 border-fuchsia-400 bg-black/70 focus:ring-fuchsia-400 focus:ring-offset-black rounded">
+                    <label for="remember_me" class="ml-2 sm:ml-3 text-xs sm:text-sm text-purple-200 font-mono tracking-wide">{{ __('Recuérdame') }}</label>
+                </div>
+
+               <!-- Enlaces + botón (vertical) -->
+<div class="flex flex-col items-center mt-6 sm:mt-8 space-y-4 sm:space-y-5">
+    <div class="flex flex-col items-center space-y-2 text-center">
+        @if (Route::has('password.request'))
+            <a href="{{ route('password.request') }}"
+               class="text-xs sm:text-sm text-fuchsia-300 hover:text-white font-mono hover:underline underline-offset-2 sm:underline-offset-4">
+                {{ __('¿Olvidaste tu contraseña?') }}
+            </a>
+        @endif
+
+        @if (Route::has('register'))
+            <a href="{{ route('register') }}"
+               class="text-xs sm:text-sm text-gray-400 hover:text-gray-100 font-mono underline underline-offset-2">
+                {{ __('No tengo Cuenta') }}
+            </a>
+        @endif
+    </div>
+
+    <x-primary-button
+        class="relative overflow-hidden bg-gradient-to-r from-fuchsia-500 to-purple-600 hover:from-fuchsia-400 hover:to-purple-500 text-white font-bold px-4 py-2 sm:px-6 sm:py-2 rounded-lg shadow-[0_0_15px_3px_rgba(236,72,153,0.4)] sm:shadow-[0_0_20px_5px_rgba(236,72,153,0.5)] transform transition-all hover:scale-105 group text-sm sm:text-base">
+        <span class="relative z-10 font-mono tracking-wider">{{ __('INICIAR SESIÓN') }}</span>
+        <span class="absolute inset-0 bg-gradient-to-r from-fuchsia-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+        <span class="absolute top-0 left-0 w-1/2 h-full bg-white/10 transform -skew-x-12 -translate-x-full group-hover:translate-x-[400%] transition-transform duration-700"></span>
+    </x-primary-button>
+</div>
+
+            </form>
         </div>
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
+        <!-- Base del arcade -->
+        <div class="bg-black h-6 sm:h-8 w-full rounded-b-md border-t-2 border-fuchsia-400/50 relative">
+            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 sm:w-32 h-1 sm:h-1.5 bg-gradient-to-r from-transparent via-fuchsia-400 to-transparent"></div>
+            <div class="absolute top-1 sm:top-1.5 left-1/2 transform -translate-x-1/2 w-16 sm:w-24 h-0.5 bg-gradient-to-r from-transparent via-purple-400 to-transparent"></div>
         </div>
+    </div>
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+    <!-- Estilos personalizados -->
+    <style>
+        .neon-text {
+            text-shadow: 0 0 8px #ec4899, 0 0 16px #d946ef;
+        }
 
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
+        .neon-glow {
+            box-shadow: 0 0 25px 8px rgba(236, 72, 153, 0.7),
+                        0 0 45px 15px rgba(168, 85, 247, 0.5),
+                        inset 0 0 15px 3px rgba(236, 72, 153, 0.3);
+        }
+
+        .neon-glow:hover {
+            box-shadow: 0 0 35px 12px rgba(236, 72, 153, 0.8),
+                        0 0 55px 20px rgba(168, 85, 247, 0.6),
+                        inset 0 0 20px 5px rgba(236, 72, 153, 0.4);
+        }
+
+        .crt-effect {
+            background:
+                linear-gradient(rgba(236, 72, 153, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(236, 72, 153, 0.03) 1px, transparent 1px);
+            background-size: 4px 4px;
+            z-index: 1;
+        }
+
+        .crt-effect::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(168, 85, 247, 0.05) 50%, transparent 100%);
+            animation: flicker 0.15s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        .animate-scanline {
+            animation: scanline 6s linear infinite;
+        }
+
+        @media (max-width: 640px) {
+            .neon-text {
+                text-shadow: 0 0 5px #ec4899, 0 0 10px #d946ef;
+            }
+
+            .neon-glow {
+                box-shadow: 0 0 15px 5px rgba(236, 72, 153, 0.7),
+                            0 0 30px 10px rgba(168, 85, 247, 0.5);
+            }
+        }
+    </style>
 </x-guest-layout>
